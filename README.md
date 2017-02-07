@@ -1,4 +1,4 @@
-Generate man page (Bash scripts).
+Generate Man Page (Bash scripts).
 ================================================================================
 
 The README is used to introduce the tool and provide instructions on
