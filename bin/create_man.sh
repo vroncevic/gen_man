@@ -13,41 +13,41 @@
 # @retval Success return 0, else return 1
 #
 # @usage
-# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 #
 # __create_man "ldapaddman"
 # local STATUS=$?
 #
 # if [ $STATUS -eq $SUCCESS ]; then
-#	# true
+#    # true
 # else
-#	# false
+#    # false
 # fi
 #
-function __create_man() {
-	local MFILE=$1 FUNC=${FUNCNAME[0]} MSG="None" DATE=`date` ML
-	if [ -n "${MFILE}" ]; then
-		MSG="Creating man page!"
-		__info_debug_message "$MSG" "$FUNC" "$GENMAN_TOOL"
-		local MT=${config_genman_util[MAN_PAGE]}
-		local MTF="${GENMAN_HOME}/conf/${MT}"
-		local AUTHOR=${config_genman_util[AUTHOR]}
-		MSG="Generating file [${MFILE}.1]"
-		__info_debug_message "$MSG" "$FUNC" "$GENMAN_TOOL"
-		while read ML
-		do
-			eval echo "${ML}" >> ${MFILE}.1
-		done < ${MTF}
-		MSG="Set permission!"
-		__info_debug_message "$MSG" "$FUNC" "$GENMAN_TOOL"
-		eval "chmod 755 ${MFILE}.1"
-		__info_debug_message_end "Done" "$FUNC" "$GENMAN_TOOL"
-		return $SUCCESS
-	fi
-	MSG="Provide argument [MAN FILE]"
-	__info_debug_message "$MSG" "$FUNC" "$GENMAN_TOOL"
-	MSG="Force exit!"
-	__info_debug_message_end "$MSG" "$FUNC" "$GENMAN_TOOL"
-	return $NOT_SUCCESS
+function __create_man {
+    local MFILE=$1 FUNC=${FUNCNAME[0]} MSG="None" DATE=`date` ML
+    if [ -n "${MFILE}" ]; then
+        MSG="Creating man page!"
+        info_debug_message "$MSG" "$FUNC" "$GENMAN_TOOL"
+        local MT=${config_genman_util[MAN_PAGE]}
+        local MTF="${GENMAN_HOME}/conf/${MT}"
+        local AUTHOR=${config_genman_util[AUTHOR]}
+        MSG="Generating file [${MFILE}.1]"
+        info_debug_message "$MSG" "$FUNC" "$GENMAN_TOOL"
+        while read ML
+        do
+            eval echo "${ML}" >> ${MFILE}.1
+        done < ${MTF}
+        MSG="Set permission!"
+        info_debug_message "$MSG" "$FUNC" "$GENMAN_TOOL"
+        eval "chmod 755 ${MFILE}.1"
+        info_debug_message_end "Done" "$FUNC" "$GENMAN_TOOL"
+        return $SUCCESS
+    fi
+    MSG="Provide argument [MAN FILE]"
+    info_debug_message "$MSG" "$FUNC" "$GENMAN_TOOL"
+    MSG="Force exit!"
+    info_debug_message_end "$MSG" "$FUNC" "$GENMAN_TOOL"
+    return $NOT_SUCCESS
 }
 
