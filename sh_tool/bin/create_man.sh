@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # @brief   Creating Man Page
-# @version ver.1.0
+# @version ver.1.0.0
 # @date    Tue Feb  7 08:49:43 CET 2017
 # @company None, free software to use 2017
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
