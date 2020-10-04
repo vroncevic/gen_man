@@ -1,10 +1,5 @@
-GEN_MAN
----------
-
-.. toctree::
- :hidden:
-
- self
+gen_man
+--------
 
 **gen_man** is shell tool for generating man pages.
 
@@ -25,7 +20,12 @@ other information that should be provided before the tool is installed.
 .. |Documentation Status| image:: https://readthedocs.org/projects/gen_man/badge/?version=latest
    :target: https://gen_man.readthedocs.io/projects/gen_man/en/latest/?badge=latest
 
-INSTALLATION
+.. toctree::
+    :hidden:
+
+    self
+
+Installation
 -------------
 
 Navigate to release `page`_ download and extract release archive.
@@ -42,13 +42,13 @@ To install **gen_man** type the following:
    cp -R ~/sh_tool/conf/  /root/scripts/gen_man/ver.1.0/
    cp -R ~/sh_tool/log/   /root/scripts/gen_man/ver.1.0/
 
-DEPENDENCIES
+Dependencies
 -------------
 
 **gen_man** requires next modules and libraries:
     sh_util `https://github.com/vroncevic/sh_util <https://github.com/vroncevic/sh_util>`_
 
-SHELL TOOL STRUCTURE
+Shell tool structure
 ---------------------
 
 **gen_man** is based on MOP.
@@ -70,7 +70,7 @@ Code structure:
    └── log/
        └── gen_man.log
 
-COPYRIGHT AND LICENCE
+Copyright and licence
 ----------------------
 
 |License: GPL v3| |License: Apache 2.0|
@@ -83,7 +83,7 @@ COPYRIGHT AND LICENCE
 
 Copyright (C) 2017 by `vroncevic.github.io/gen_man <https://vroncevic.github.io/gen_man>`_
 
-This tool is free software; you can redistribute it and/or modify it
+**gen_man** is free software; you can redistribute it and/or modify it
 under the same terms as Bash itself, either Bash version 4.2.47 or,
 at your option, any later version of Bash 4 you may have available.
 
