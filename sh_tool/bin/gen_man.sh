@@ -30,12 +30,12 @@ GEN_MAN_LOG=${GEN_MAN_HOME}/log
 .    ${GEN_MAN_HOME}/bin/install_man.sh
 .    ${GEN_MAN_HOME}/bin/create_man.sh
 
-declare -A GEN_MAN_USAGE=(
-    [USAGE_TOOL]="${GEN_MAN_TOOL}"
-    [USAGE_ARG1]="[OPERATION] Create | install man page"
-    [USAGE_ARG2]="[MAN FILE] Filename of man page"
-    [USAGE_EX_PRE]="# Example create new man page for ldap script"
-    [USAGE_EX]="${GEN_MAN_TOOL} create ldapaddman"
+declare -A GEN_MAN_Usage=(
+    [Usage_TOOL]="${GEN_MAN_TOOL}"
+    [Usage_ARG1]="[OPERATION] Create | install man page"
+    [Usage_ARG2]="[MAN FILE] Filename of man page"
+    [Usage_EX_PRE]="# Example create new man page for ldap script"
+    [Usage_EX]="${GEN_MAN_TOOL} create ldapaddman"
 )
 
 declare -A GEN_MAN_LOGGING=(
@@ -136,7 +136,7 @@ function __gen_man {
         fi
         exit 0
     fi
-    usage GEN_MAN_USAGE
+    usage GEN_MAN_Usage
     exit 128
 }
 
