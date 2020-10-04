@@ -13,7 +13,11 @@ jobs:
       - uses: actions/checkout@v2
       - name: Check syntax script
         id: syntax_checker
-        run: bash -n sh_tool/bin/gen_man.sh && echo ::set-output name=status::success || echo ::set-output name=status::failure
+        run: |
+          bash -n sh_tool/bin/create_man.sh && script_1=0 || script_1=1
+          bash -n sh_tool/bin/gen_man.sh && script_2=0 || script_2=1
+          bash -n sh_tool/bin/install_man.sh && script_3=0 || script_3=1
+          [[ $script_1 -eq 0 && $script_2 -eq 0 && $script_3 -eq 0 ]] && echo ::set-output name=status::success || echo ::set-output name=status::failure
       - name: Check size script
         id: size_checker
         run: |
