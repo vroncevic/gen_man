@@ -27,7 +27,7 @@ other information that should be provided before the tool is installed.
 
 ### Installation
 
-Navigate to release [page](https://github.com/vroncevic/gen_man/releases) download and extract release archive.
+Navigate to release **[page](https://github.com/vroncevic/gen_man/releases)** download and extract release archive.
 
 To install **gen_man** type the following:
 

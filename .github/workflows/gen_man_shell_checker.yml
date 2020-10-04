@@ -22,8 +22,10 @@ jobs:
         id: size_checker
         run: |
           echo Checking size
-          code_line_number=$(wc -l < sh_tool/bin/gen_man.sh)
-          [[ $code_line_number -gt 300 ]] && echo ::set-output name=status::failure || echo ::set-output name=status::success
+          code_line_number_1=$(wc -l < sh_tool/bin/create_man.sh)
+          code_line_number_2=$(wc -l < sh_tool/bin/gen_man.sh)
+          code_line_number_3=$(wc -l < sh_tool/bin/install_man.sh)
+          [[ $code_line_number_1 -gt 300 && $code_line_number_2 -gt 300 && $code_line_number_3 -gt 300 ]] && echo ::set-output name=status::failure || echo ::set-output name=status::success
       - name: Check on failures
         if: steps.syntax_checker.outputs.status == 'failure' || steps.size_checker.outputs.status == 'failure'
         run: exit 1
