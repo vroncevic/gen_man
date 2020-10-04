@@ -4,6 +4,8 @@
 
 Developed in **[bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell))** code: **100%**.
 
+[![gen_man shell checker](https://github.com/vroncevic/gen_man/workflows/gen_man%20shell%20checker/badge.svg)](https://github.com/vroncevic/gen_man/actions?query=workflow%3A%22gen_man+shell+checker%22)
+
 The README is used to introduce the tool and provide instructions on
 how to install the tool, any machine dependencies it may have and any
 other information that should be provided before the tool is installed.
@@ -40,6 +42,8 @@ cp -R ~/sh_tool/log/   /root/scripts/gen_man/ver.1.0/
 ![alt tag](https://raw.githubusercontent.com/vroncevic/gen_man/dev/docs/setup_tree.png)
 
 Or You can use docker to create image/container.
+
+[![gen_man docker checker](https://github.com/vroncevic/gen_man/workflows/gen_man%20docker%20checker/badge.svg)](https://github.com/vroncevic/gen_man/actions?query=workflow%3A%22gen_man+docker+checker%22)
 
 ### Usage
 
