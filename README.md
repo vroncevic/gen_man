@@ -1,3 +1,5 @@
+<img align="right" src="https://raw.githubusercontent.com/vroncevic/gen_man/dev/docs/gen_man_logo.png" width="25%">
+
 # Generate Man Page
 
 **gen_man** is shell tool for generating man pages.
@@ -32,11 +34,11 @@ Navigate to release **[page](https://github.com/vroncevic/gen_man/releases)** do
 To install **gen_man** type the following:
 
 ```
-tar xvzf gen_man-x.y.z.tar.gz
-cd gen_man-x.y.z
-cp -R ~/sh_tool/bin/   /root/scripts/gen_man/ver.1.0/
-cp -R ~/sh_tool/conf/  /root/scripts/gen_man/ver.1.0/
-cp -R ~/sh_tool/log/   /root/scripts/gen_man/ver.1.0/
+tar xvzf gen_man-x.y.tar.gz
+cd gen_man-x.y
+cp -R ~/sh_tool/bin/   /root/scripts/gen_man/ver.x.y/
+cp -R ~/sh_tool/conf/  /root/scripts/gen_man/ver.x.y/
+cp -R ~/sh_tool/log/   /root/scripts/gen_man/ver.x.y/
 ```
 
 ![alt tag](https://raw.githubusercontent.com/vroncevic/gen_man/dev/docs/setup_tree.png)
@@ -49,7 +51,7 @@ Or You can use docker to create image/container.
 
 ```
 # Create symlink for shell tool
-ln -s /root/scripts/gen_man/ver.1.0/bin/gen_man.sh /root/bin/gen_man
+ln -s /root/scripts/gen_man/ver.x.y/bin/gen_man.sh /root/bin/gen_man
 
 # Setting PATH
 export PATH=${PATH}:/root/bin/
@@ -69,7 +71,7 @@ gen_man SimpleTest
 
 Code structure:
 ```
-.
+sh_tool/
 ├── bin/
 │   ├── create_man.sh
 │   ├── gen_man.sh
