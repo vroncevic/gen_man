@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# @brief   Creating Man Page
-# @version ver.1.0
-# @date    Tue Feb  7 08:49:43 CET 2017
-# @company None, free software to use 2017
+# @brief   Generate and install man page
+# @version ver.2.0
+# @date    Sun 05 Dec 2021 06:09:13 PM CET
+# @company None, free software to use 2021
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
 #
 
@@ -28,26 +28,26 @@ function __create_man {
     local MFILE=$1 FUNC=${FUNCNAME[0]} MSG="None" DATE=`date` ML
     if [ -n "${MFILE}" ]; then
         MSG="Creating man page!"
-        info_debug_message "$MSG" "$FUNC" "$GENMAN_TOOL"
-        local MT=${config_genman_util[MAN_PAGE]}
-        local MTF="${GENMAN_HOME}/conf/${MT}"
-        local AUTHOR=${config_genman_util[AUTHOR]}
+        info_debug_message "$MSG" "$FUNC" "$GEN_MAN_TOOL"
+        local MT=${config_gen_man_util[MAN_PAGE]}
+        local MTF="${GEN_MAN_HOME}/conf/${MT}"
+        local AUTHOR=${config_gen_man_util[AUTHOR]}
         MSG="Generating file [${MFILE}.1]"
-        info_debug_message "$MSG" "$FUNC" "$GENMAN_TOOL"
+        info_debug_message "$MSG" "$FUNC" "$GEN_MAN_TOOL"
         while read ML
         do
             eval echo "${ML}" >> ${MFILE}.1
         done < ${MTF}
         MSG="Set permission!"
-        info_debug_message "$MSG" "$FUNC" "$GENMAN_TOOL"
+        info_debug_message "$MSG" "$FUNC" "$GEN_MAN_TOOL"
         eval "chmod 755 ${MFILE}.1"
-        info_debug_message_end "Done" "$FUNC" "$GENMAN_TOOL"
+        info_debug_message_end "Done" "$FUNC" "$GEN_MAN_TOOL"
         return $SUCCESS
     fi
     MSG="Provide argument [MAN FILE]"
-    info_debug_message "$MSG" "$FUNC" "$GENMAN_TOOL"
+    info_debug_message "$MSG" "$FUNC" "$GEN_MAN_TOOL"
     MSG="Force exit!"
-    info_debug_message_end "$MSG" "$FUNC" "$GENMAN_TOOL"
+    info_debug_message_end "$MSG" "$FUNC" "$GEN_MAN_TOOL"
     return $NOT_SUCCESS
 }
 

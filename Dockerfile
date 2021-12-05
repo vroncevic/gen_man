@@ -16,13 +16,13 @@
 FROM debian:10
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive \
- apt-get install -yq --no-install-recommends \
- tree \
- htop \
- wget \
- unzip \
- ca-certificates \
- openssl
+    apt-get install -yq --no-install-recommends \
+    tree \
+    htop \
+    wget \
+    unzip \
+    ca-certificates \
+    openssl
 
 RUN wget https://github.com/vroncevic/sh_util/archive/v1.0.zip
 RUN unzip v1.0.zip
@@ -35,12 +35,12 @@ RUN rm -Rf v1.0.zip sh_util-1.0
 RUN mkdir /sh_tool/
 COPY sh_tool /sh_tool/
 RUN find /sh_tool/ -name "*.editorconfig" -type f -exec rm -Rf {} \;
-RUN mkdir -p /root/scripts/gen_man/ver.1.0/
+RUN mkdir -p /root/scripts/gen_man/ver.2.0/
 RUN mkdir /root/bin/
-RUN cp -R /sh_tool/bin/   /root/scripts/gen_man/ver.1.0/
-RUN cp -R /sh_tool/conf/  /root/scripts/gen_man/ver.1.0/
-RUN cp -R /sh_tool/log/   /root/scripts/gen_man/ver.1.0/
+RUN cp -R /sh_tool/bin/   /root/scripts/gen_man/ver.2.0/
+RUN cp -R /sh_tool/conf/  /root/scripts/gen_man/ver.2.0/
+RUN cp -R /sh_tool/log/   /root/scripts/gen_man/ver.2.0/
 RUN rm -Rf /sh_tool/
-RUN chmod -R 755 /root/scripts/gen_man/ver.1.0/
-RUN ln -s /root/scripts/gen_man/ver.1.0/bin/gen_man.sh /root/bin/gen_man
-RUN tree /root/scripts/gen_man/ver.1.0/
+RUN chmod -R 755 /root/scripts/gen_man/ver.2.0/
+RUN ln -s /root/scripts/gen_man/ver.2.0/bin/gen_man.sh /root/bin/gen_man
+RUN tree /root/scripts/gen_man/ver.2.0/
