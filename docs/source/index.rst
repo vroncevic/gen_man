@@ -33,11 +33,16 @@ other information that should be provided before the tool is installed.
 Installation
 -------------
 
+|Debian Linux OS|
+
+.. |Debian Linux OS| image:: https://raw.githubusercontent.com/vroncevic/gen_man/dev/docs/debtux.png
+   :target: https://www.debian.org
+
 Navigate to release `page`_ download and extract release archive.
 
 .. _page: https://github.com/vroncevic/gen_man/releases
 
-To install **gen_man** type the following:
+To install **gen_man** type the following
 
 .. code-block:: bash
 
@@ -57,7 +62,7 @@ Or You can use Docker to create image/container.
 Dependencies
 -------------
 
-**gen_man** requires next modules and libraries:
+**gen_man** requires next modules and libraries
 
 * sh_util `https://github.com/vroncevic/sh_util <https://github.com/vroncevic/sh_util>`_
 
@@ -66,17 +71,20 @@ Shell tool structure
 
 **gen_man** is based on MOP.
 
-Code structure:
+Shell tool structure
 
 .. code-block:: bash
 
    sh_tool/
    ├── bin/
+   │   ├── center.sh
    │   ├── create_man.sh
+   │   ├── display_logo.sh
    │   ├── gen_man.sh
    │   └── install_man.sh
    ├── conf/
    │   ├── gen_man.cfg
+   │   ├── gen_man.logo
    │   ├── gen_man_util.cfg
    │   └── template/
    │       └── man.template

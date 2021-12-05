@@ -1,9 +1,9 @@
 #!/bin/bash
 #
 # @brief   Generate and install man page
-# @version ver.1.0
-# @date    Tue Feb  7 08:49:43 CET 2017
-# @company None, free software to use 2017
+# @version ver.2.0
+# @date    Sun 05 Dec 2021 06:09:13 PM CET
+# @company None, free software to use 2021
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
 #
 UTIL_ROOT=/root/scripts
@@ -20,22 +20,28 @@ UTIL_LOG=${UTIL}/log
 .    ${UTIL}/bin/load_util_conf.sh
 .    ${UTIL}/bin/progress_bar.sh
 
-GEN_MAN_TOOL=genman
-GEN_MAN_VERSION=ver.1.0
+GEN_MAN_TOOL=gen_man
+GEN_MAN_VERSION=ver.2.0
 GEN_MAN_HOME=${UTIL_ROOT}/${GEN_MAN_TOOL}/${GEN_MAN_VERSION}
 GEN_MAN_CFG=${GEN_MAN_HOME}/conf/${GEN_MAN_TOOL}.cfg
 GEN_MAN_UTIL_CFG=${GEN_MAN_HOME}/conf/${GEN_MAN_TOOL}_util.cfg
+GEN_MAN_LOGO=${GEN_MAN_HOME}/conf/${GEN_MAN_TOOL}.logo
 GEN_MAN_LOG=${GEN_MAN_HOME}/log
 
+tabs 4
+CONSOLE_WIDTH=$(stty size | awk '{print $2}')
+
+.    ${GEN_MAN_HOME}/bin/center.sh
+.    ${GEN_MAN_HOME}/bin/display_logo.sh
 .    ${GEN_MAN_HOME}/bin/install_man.sh
 .    ${GEN_MAN_HOME}/bin/create_man.sh
 
-declare -A GEN_MAN_Usage=(
-    [Usage_TOOL]="${GEN_MAN_TOOL}"
-    [Usage_ARG1]="[OPERATION] Create | install man page"
-    [Usage_ARG2]="[MAN FILE] Filename of man page"
-    [Usage_EX_PRE]="# Example create new man page for ldap script"
-    [Usage_EX]="${GEN_MAN_TOOL} create ldapaddman"
+declare -A GEN_MAN_USAGE=(
+    [USAGE_TOOL]="${GEN_MAN_TOOL}"
+    [USAGE_ARG1]="[OPERATION] Create | install man page"
+    [USAGE_ARG2]="[MAN FILE] Filename of man page"
+    [USAGE_EX_PRE]="# Example create new man page for ldap script"
+    [USAGE_EX]="${GEN_MAN_TOOL} create ldapaddman"
 )
 
 declare -A GEN_MAN_LOGGING=(
@@ -80,6 +86,7 @@ TOOL_NOTIFY="false"
 #
 function __gen_man {
     local OP=$1 MFILE=$2
+    display_logo
     if [[ -n "${OP}" && -n "${MFILE}" ]]; then
         local FUNC=${FUNCNAME[0]} MSG="None"
         local STATUS_CONF STATUS_CONF_UTIL STATUS
@@ -136,7 +143,7 @@ function __gen_man {
         fi
         exit 0
     fi
-    usage GEN_MAN_Usage
+    usage GEN_MAN_USAGE
     exit 128
 }
 
@@ -160,4 +167,3 @@ if [ $STATUS -eq $SUCCESS ]; then
 fi
 
 exit 127
-
