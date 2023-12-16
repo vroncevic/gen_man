@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# @brief   Generate and install man page
+# @brief   Apache Tomcat Server Manager
 # @version ver.2.0
-# @date    Sun 05 Dec 2021 06:09:13 PM CET
+# @date    Sat Nov 20 11:40:40 CET 2021
 # @company None, free software to use 2021
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
 #
