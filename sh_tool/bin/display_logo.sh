@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# @brief   Generate and install man page
+# @brief   Apache Tomcat Server Manager
 # @version ver.2.0
-# @date    Sun 05 Dec 2021 06:09:13 PM CET
+# @date    Sat Nov 20 11:40:40 CET 2021
 # @company None, free software to use 2021
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
 #
@@ -18,29 +18,27 @@
 # display_logo
 #
 function display_logo {
-    local ORG='vroncevic'
-    local REPO='gen_man'
-    local INFO_URL="https://${ORG}.github.io/${REPO}"
-    local INFO_TXT="github.io/${REPO}"
-    local ISSUE_URL="https://github.com/${ORG}/${REPO}/issues/new/choose"
-    local ISSUE_TXT='github.io/issue'
-    local AUTHOR_URL="https://${ORG}.github.io/bio/"
-    local AUTHOR_TXT="${ORG}.github.io"
-    while IFS= read -r LINE
+    local info_url='https://vroncevic.github.io/atmanager'
+    local info_txt='github.io/atmanager'
+    local issue_url='https://github.com/vroncevic/atmanager/issues/new/choose'
+    local issue_txt='github.io/issue'
+    local author_url='https://vroncevic.github.io/bio/'
+    local author_txt='vroncevic.github.io'
+    while IFS= read -r line
     do
         center 0
-        printf "%s\n" "$LINE"
-    done < ${GEN_MAN_LOGO}
+        printf "%s\n" "$line"
+    done < ${ATMANAGER_LOGO}
     center 2
     printf "Info   "
-    printf "\e]8;;${INFO_URL}\a${INFO_TXT}\e]8;;\a"
-    printf " ${GEN_MAN_VERSION} \n"
+    printf "\e]8;;${info_url}\a${info_txt}\e]8;;\a"
+    printf " ${ATMANAGER_VERSION} \n"
     center 2
     printf "Issue  "
-    printf "\e]8;;${ISSUE_URL}\a${ISSUE_TXT}\e]8;;\a"
+    printf "\e]8;;${issue_url}\a${issue_txt}\e]8;;\a"
     printf "\n"
     center 2
     printf "Author "
-    printf "\e]8;;${AUTHOR_URL}\a${AUTHOR_TXT}\e]8;;\a"
+    printf "\e]8;;${author_url}\a${author_txt}\e]8;;\a"
     printf "\n\n"
 }
