@@ -1,6 +1,6 @@
-<img align="right" src="https://raw.githubusercontent.com/vroncevic/gen_man/dev/docs/gen_man_logo.png" width="25%">
-
 # Generate Man Page
+
+<img align="right" src="https://raw.githubusercontent.com/vroncevic/gen_man/dev/docs/gen_man_logo.png" width="25%">
 
 **gen_man** is shell tool for generating man pages.
 
@@ -33,7 +33,7 @@ Navigate to release **[page](https://github.com/vroncevic/gen_man/releases)** do
 
 To install **gen_man** type the following:
 
-```
+```bash
 tar xvzf gen_man-x.y.tar.gz
 cd gen_man-x.y
 cp -R ~/sh_tool/bin/   /root/scripts/gen_man/ver.x.y/
@@ -47,7 +47,7 @@ Or You can use docker to create image/container.
 
 ### Usage
 
-```
+```bash
 # Create symlink for shell tool
 ln -s /root/scripts/gen_man/ver.x.y/bin/gen_man.sh /root/bin/gen_man
 
@@ -67,8 +67,9 @@ gen_man SimpleTest
 
 **gen_man** is based on MOP.
 
-Code structure:
-```
+Code structure
+
+```bash
 sh_tool/
 ├── bin/
 │   ├── create_man.sh
