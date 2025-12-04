@@ -1,21 +1,40 @@
 #!/bin/bash
 #
 # @brief   Install Man Page
-# @version ver.1.0
+# @version ver.3.0
 # @date    Tue Feb  7 08:49:43 CET 2017
 # @company None, free software to use 2017
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
 #
+UTIL_ROOT=/root/scripts
+UTIL_VERSION=ver.1.0
+UTIL=${UTIL_ROOT}/sh_util/${UTIL_VERSION}
+UTIL_LOG=${UTIL}/log
+
+.    ${UTIL}/bin/devel.sh
+.    ${UTIL}/bin/usage.sh
+.    ${UTIL}/bin/check_tool.sh
+
+GEN_MAN_TOOL=gen_man
+
+declare -A GEN_MAN_INSTALL_USAGE=(
+    [USAGE_TOOL]="${GEN_MAN_TOOL}"
+    [USAGE_ARG1]="[TOOL NAME] Tool name"
+    [USAGE_ARG2]="[INSTALL TOOL] Install tool path"
+    [USAGE_ARG3]="[]HOME PAGES] Home pages path"
+    [USAGE_EX_PRE]="# Example install new man page for ldap script"
+    [USAGE_EX]="__install_man ldapaddman.1 /usr/bin/install /usr/share"
+)
 
 #
 # @brief  Install Man page
-# @param  Value required name of man file
-# @retval Success return 0, else return 1
+# @params Name of man page file, install tool path and home pages path
+# @retval Success return $SUCCESS (0), else return $NOT_SUCCESS (1)
 #
 # @usage
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 #
-# __install_man "ldapaddman"
+# __install_man "ldapaddman.1" "/usr/bin/install" "/usr/share/man/man1"
 # local STATUS=$?
 #
 # if [ $STATUS -eq $SUCCESS ]; then
@@ -25,43 +44,39 @@
 # fi
 #
 function __install_man {
-    local MFILE=$1 FUNC=${FUNCNAME[0]} MSG="None" STATUS
-    if [ -n "${MFILE}" ]; then
+    local MFILE=$1 INSTALL=$2 HPAGES=$3
+    local FUNC=${FUNCNAME[0]} MSG="None" STATUS
+    if [[ -n "${MFILE}" && -n "${INSTALL}" && -n "${HPAGES}" ]]; then
         MSG="Installing man page!"
-        info_debug_message "$MSG" "$FUNC" "$GENMAN_TOOL"
+        info_debug_message "$MSG" "$FUNC" "$GEN_MAN_TOOL"
         if [ ! -e "${MFILE}" ]; then
-            MSG="Check file [${MFILE}.1]"
-            info_debug_message "$MSG" "$FUNC" "$GENMAN_TOOL"
+            MSG="Check file [${MFILE}]"
+            info_debug_message "$MSG" "$FUNC" "$GEN_MAN_TOOL"
             MSG="Force exit!"
-            info_debug_message_end "$MSG" "$FUNC" "$GENMAN_TOOL"
+            info_debug_message_end "$MSG" "$FUNC" "$GEN_MAN_TOOL"
             return $NOT_SUCCESS
         fi
-        local INSTALL=${config_genman_util[INSTALL]}
-        local HPAGES=${config_genman_util[MAN_HOME_PAGES]}
         if [ -d "${HPAGES}/" ]; then
             check_tool "${INSTALL}"
             STATUS=$?
             if [ $STATUS -eq $SUCCESS ]; then
-                eval "${INSTALL} -g 0 -o 0 -m 0644 ${MFILE}.1 ${HPAGES}/"
-                gzip "${HPAGES}/${MFILE}.1"
-                info_debug_message_end "Done" "$FUNC" "$GENMAN_TOOL"
+                eval "${INSTALL} -g 0 -o 0 -m 0644 ${MFILE} ${HPAGES}/"
+                gzip "${HPAGES}/${MFILE}"
+                info_debug_message_end "Done" "$FUNC" "$GEN_MAN_TOOL"
                 return $SUCCESS
             fi
-            cp ${MFILE}.1 "${HPAGES}/${MFILE}.1"
-            gzip "${HPAGES}/${MFILE}.1"
-            info_debug_message_end "Done" "$FUNC" "$GENMAN_TOOL"
+            cp ${MFILE} "${HPAGES}/${MFILE}"
+            gzip "${HPAGES}/${MFILE}"
+            info_debug_message_end "Done" "$FUNC" "$GEN_MAN_TOOL"
             return $SUCCESS
         fi
         MSG="Check directory [${HPAGES}/]"
-        info_debug_message "$MSG" "$FUNC" "$GENMAN_TOOL"
+        info_debug_message "$MSG" "$FUNC" "$GEN_MAN_TOOL"
         MSG="Force exit!"
-        info_debug_message_end "$MSG" "$FUNC" "$GENMAN_TOOL"
+        info_debug_message_end "$MSG" "$FUNC" "$GEN_MAN_TOOL"
         return $NOT_SUCCESS
     fi
-    MSG="Provide argument [MAN FILE]"
-    info_debug_message "$MSG" "$FUNC" "$GENMAN_TOOL"
-    MSG="Force exit!"
-    info_debug_message_end "$MSG" "$FUNC" "$GENMAN_TOOL"
+    usage GEN_MAN_INSTALL_USAGE
     return $NOT_SUCCESS
 }
 
