@@ -41,11 +41,11 @@ To install **gen_man** type the following:
 
 .. code-block:: bash
 
-   tar xvzf gen_man-x.y.tar.gz
-   cd gen_man-x.y
-   cp -R ~/sh_tool/bin/   /root/scripts/gen_man/ver.x.y/
-   cp -R ~/sh_tool/conf/  /root/scripts/gen_man/ver.x.y/
-   cp -R ~/sh_tool/log/   /root/scripts/gen_man/ver.x.y/
+   tar xvzf gen_man-3.0.tar.gz
+   cd gen_man-3.0
+   cp -R ~/sh_tool/bin/   /root/scripts/gen_man/ver.3.0/
+   cp -R ~/sh_tool/conf/  /root/scripts/gen_man/ver.3.0/
+   cp -R ~/sh_tool/log/   /root/scripts/gen_man/ver.3.0/
 
 Or You can use Docker to create image/container.
 
@@ -89,7 +89,7 @@ Copyright and licence
 .. |License: Apache 2.0| image:: https://img.shields.io/badge/License-Apache%202.0-blue.svg
    :target: https://opensource.org/licenses/Apache-2.0
 
-Copyright (C) 2017 - 2024 by `vroncevic.github.io/gen_man <https://vroncevic.github.io/gen_man>`_
+Copyright (C) 2017 - 2026 by `vroncevic.github.io/gen_man <https://vroncevic.github.io/gen_man>`_
 
 **gen_man** is free software; you can redistribute it and/or modify it
 under the same terms as Bash itself, either Bash version 4.2.47 or,

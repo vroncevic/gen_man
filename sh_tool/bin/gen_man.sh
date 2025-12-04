@@ -19,12 +19,14 @@ UTIL_LOG=${UTIL}/log
 .    ${UTIL}/bin/load_conf.sh
 .    ${UTIL}/bin/load_util_conf.sh
 .    ${UTIL}/bin/progress_bar.sh
+.    ${UTIL}/bin/display_logo.sh
 
 GEN_MAN_TOOL=genman
 GEN_MAN_VERSION=ver.1.0
 GEN_MAN_HOME=${UTIL_ROOT}/${GEN_MAN_TOOL}/${GEN_MAN_VERSION}
 GEN_MAN_CFG=${GEN_MAN_HOME}/conf/${GEN_MAN_TOOL}.cfg
 GEN_MAN_UTIL_CFG=${GEN_MAN_HOME}/conf/${GEN_MAN_TOOL}_util.cfg
+GEN_MAN_LOGO=${GEN_MAN_HOME}/conf/${GEN_MAN_TOOL}.logo
 GEN_MAN_LOG=${GEN_MAN_HOME}/log
 
 .    ${GEN_MAN_HOME}/bin/install_man.sh
@@ -81,6 +83,7 @@ TOOL_NOTIFY="false"
 function __gen_man {
     local OP=$1 MFILE=$2
     if [[ -n "${OP}" && -n "${MFILE}" ]]; then
+        display_logo "vroncevic" "${GEN_MAN_TOOL}" "${GEN_MAN_VERSION}" "${GEN_MAN_LOGO}"
         local FUNC=${FUNCNAME[0]} MSG="None"
         local STATUS_CONF STATUS_CONF_UTIL STATUS
         MSG="Loading basic and util configuration!"
