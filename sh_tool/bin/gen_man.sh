@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # @brief   Generate and install man page
-# @version ver.1.0
+# @version ver.3.0
 # @date    Tue Feb  7 08:49:43 CET 2017
 # @company None, free software to use 2017
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
@@ -21,8 +21,8 @@ UTIL_LOG=${UTIL}/log
 .    ${UTIL}/bin/progress_bar.sh
 .    ${UTIL}/bin/display_logo.sh
 
-GEN_MAN_TOOL=genman
-GEN_MAN_VERSION=ver.1.0
+GEN_MAN_TOOL=gen_man
+GEN_MAN_VERSION=ver.3.0
 GEN_MAN_HOME=${UTIL_ROOT}/${GEN_MAN_TOOL}/${GEN_MAN_VERSION}
 GEN_MAN_CFG=${GEN_MAN_HOME}/conf/${GEN_MAN_TOOL}.cfg
 GEN_MAN_UTIL_CFG=${GEN_MAN_HOME}/conf/${GEN_MAN_TOOL}_util.cfg
@@ -32,12 +32,12 @@ GEN_MAN_LOG=${GEN_MAN_HOME}/log
 .    ${GEN_MAN_HOME}/bin/install_man.sh
 .    ${GEN_MAN_HOME}/bin/create_man.sh
 
-declare -A GEN_MAN_Usage=(
-    [Usage_TOOL]="${GEN_MAN_TOOL}"
-    [Usage_ARG1]="[OPERATION] Create | install man page"
-    [Usage_ARG2]="[MAN FILE] Filename of man page"
-    [Usage_EX_PRE]="# Example create new man page for ldap script"
-    [Usage_EX]="${GEN_MAN_TOOL} create ldapaddman"
+declare -A GEN_MAN_USAGE=(
+    [USAGE_TOOL]="${GEN_MAN_TOOL}"
+    [USAGE_ARG1]="[OPERATION] Create | install man page"
+    [USAGE_ARG2]="[MAN FILE] Filename of man page"
+    [USAGE_EX_PRE]="# Example create new man page for ldap script"
+    [USAGE_EX]="${GEN_MAN_TOOL} create ldapaddman"
 )
 
 declare -A GEN_MAN_LOGGING=(
@@ -109,7 +109,9 @@ function __gen_man {
         TOOL_DBG=${config_gen_man[DEBUGGING]}
         TOOL_NOTIFY=${config_gen_man[EMAILING]}
         if [ "${OP}" == "create" ]; then
-            __create_man ${MFILE}
+            local MAN_PAGE=${config_gen_man_util[MAN_PAGE]}
+            local AUTHOR=${config_gen_man_util[AUTHOR]}
+            __create_man ${MFILE} ${MAN_PAGE} ${AUTHOR}
             STATUS=$?
             if [ $STATUS -eq $NOT_SUCCESS ]; then
                 MSG="Force exit!"
@@ -120,7 +122,9 @@ function __gen_man {
             GEN_MAN_LOGGING[LOG_MSGE]=$MSG
             logging GEN_MAN_LOGGING
         elif [ "${OP}" == "install" ]; then
-            __install_man ${MFILE}
+            local INSTALL=${config_gen_man_util[INSTALL]}
+            local HPAGES=${config_gen_man_util[MAN_HOME_PAGES]}
+            __install_man ${MFILE} ${INSTALL} ${HPAGES}
             STATUS=$?
             if [ $STATUS -eq $NOT_SUCCESS ]; then
                 MSG="Force exit!"
@@ -139,7 +143,7 @@ function __gen_man {
         fi
         exit 0
     fi
-    usage GEN_MAN_Usage
+    usage GEN_MAN_USAGE
     exit 128
 }
 
