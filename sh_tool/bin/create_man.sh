@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # @brief   Creating Man Page
-# @version ver.3.0
+# @version ver.4.0
 # @date    Tue Feb  7 08:49:43 CET 2017
 # @company None, free software to use 2017
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
@@ -11,11 +11,10 @@ UTIL_VERSION=ver.1.0
 UTIL=${UTIL_ROOT}/sh_util/${UTIL_VERSION}
 UTIL_LOG=${UTIL}/log
 
-.    ${UTIL}/bin/devel.sh
 .    ${UTIL}/bin/usage.sh
 
 GEN_MAN_TOOL=gen_man
-GEN_MAN_VERSION=ver.3.0
+GEN_MAN_VERSION=ver.4.0
 GEN_MAN_HOME=${UTIL_ROOT}/${GEN_MAN_TOOL}/${GEN_MAN_VERSION}
 
 declare -A GEN_MAN_CREATE_USAGE=(
@@ -51,23 +50,23 @@ declare -A GEN_MAN_CREATE_USAGE=(
 function __create_man {
     local MFILE=$1 MT=$2 AUTHOR=$3
     local FUNC=${FUNCNAME[0]} MSG="None" DATE=`date` ML
-    if [[ -n "${MFILE}" && -n "${MT}" && -n "${AUTHOR}" ]]; then
-        MSG="Creating man page!"
-        info_debug_message "$MSG" "$FUNC" "$GEN_MAN_TOOL"
-        local MTF="${GEN_MAN_HOME}/conf/${MT}"
-        MSG="Generating file [${MFILE}.1]"
-        info_debug_message "$MSG" "$FUNC" "$GEN_MAN_TOOL"
-        while read ML
-        do
-            eval echo "${ML}" >> ${MFILE}.1
-        done < ${MTF}
-        MSG="Set permission!"
-        info_debug_message "$MSG" "$FUNC" "$GEN_MAN_TOOL"
-        eval "chmod 755 ${MFILE}.1"
-        info_debug_message_end "Done" "$FUNC" "$GEN_MAN_TOOL"
-        return $SUCCESS
+    if [[ -z "${MFILE}" || -z "${MT}" || -z "${AUTHOR}" ]]; then
+        usage GEN_MAN_CREATE_USAGE
+        return $NOT_SUCCESS
     fi
-    usage GEN_MAN_CREATE_USAGE
-    return $NOT_SUCCESS
+    MSG="Creating man page!"
+    info_debug_message "$MSG" "$FUNC" "$GEN_MAN_TOOL"
+    local MTF="${GEN_MAN_HOME}/conf/${MT}"
+    MSG="Generating file [${MFILE}.1]"
+    info_debug_message "$MSG" "$FUNC" "$GEN_MAN_TOOL"
+    while read ML
+    do
+        eval echo "${ML}" >> ${MFILE}.1
+    done < ${MTF}
+    MSG="Set permission!"
+    info_debug_message "$MSG" "$FUNC" "$GEN_MAN_TOOL"
+    eval "chmod 755 ${MFILE}.1"
+    info_debug_message_end "Done" "$FUNC" "$GEN_MAN_TOOL"
+    return $SUCCESS
 }
 

@@ -34,11 +34,11 @@ Navigate to release **[page](https://github.com/vroncevic/gen_man/releases)** do
 To install **gen_man** type the following:
 
 ```bash
-tar xvzf gen_man-3.0.tar.gz
-cd gen_man-3.0
-cp -R ~/sh_tool/bin/   /root/scripts/gen_man/ver.3.0/
-cp -R ~/sh_tool/conf/  /root/scripts/gen_man/ver.3.0/
-cp -R ~/sh_tool/log/   /root/scripts/gen_man/ver.3.0/
+tar xvzf gen_man-4.0.tar.gz
+cd gen_man-4.0
+cp -R ~/sh_tool/bin/   /root/scripts/gen_man/ver.4.0/
+cp -R ~/sh_tool/conf/  /root/scripts/gen_man/ver.4.0/
+cp -R ~/sh_tool/log/   /root/scripts/gen_man/ver.4.0/
 ```
 
 ![alt tag](https://raw.githubusercontent.com/vroncevic/gen_man/dev/docs/setup_tree.png)
@@ -49,7 +49,7 @@ Or You can use docker to create image/container.
 
 ```bash
 # Create symlink for shell tool
-ln -s /root/scripts/gen_man/ver.3.0/bin/gen_man.sh /root/bin/gen_man
+ln -s /root/scripts/gen_man/ver.4.0/bin/gen_man.sh /root/bin/gen_man
 
 # Setting PATH
 export PATH=${PATH}:/root/bin/
@@ -95,7 +95,7 @@ More documentation and info at:
 
 ### Copyright and licence
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-4.0) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 Copyright (C) 2017 - 2026 by [vroncevic.github.io/gen_man](https://vroncevic.github.io/gen_man)
 
